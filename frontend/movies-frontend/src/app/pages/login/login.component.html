@@ -1,0 +1,20 @@
+<h1>Login form</h1>
+<form class="form" [formGroup]="loginForm">
+  <input formControlName="username" type="text"
+         class="form-control input-custom input-name text-semi-bold mx-auto"
+         placeholder="Login-Name">
+  <app-show-errors [control]="loginForm.controls.username"></app-show-errors>
+  <br>
+  <br>
+  <input formControlName="password" type="password"
+         class="form-control input-custom input-surname text-semi-bold mx-auto"
+         placeholder="Passwort">
+  <app-show-errors class="profile-errors"
+                   [control]="loginForm.controls.password"
+  ></app-show-errors>
+  <br>
+  <br>
+  <div class="error-message">{{errorMessage}}</div>
+  <br>
+  <button (click)="login()" [disabled]="!loginForm.valid">Log in</button>
+</form>

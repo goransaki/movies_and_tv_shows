@@ -1,0 +1,26 @@
+<button (click)="logout()">Logout</button>
+<br>
+<br>
+<br>
+<div class="tabs">
+  <span class="cursor-pointer" [class.active]="type===TYPE_MOVIE" (click)="changeType(TYPE_MOVIE)">Movies</span>
+  <span class="cursor-pointer" [class.active]="type===TYPE_TV_SHOW" (click)="changeType(TYPE_TV_SHOW)">TV Shows</span>
+</div>
+<br>
+<input type="text" (input)="search($event.target.value)" placeholder="Search">
+<br>
+<br>
+<div class="video-card" *ngFor="let video of videoLIst">
+  <img class="image" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64,'+ video.image)" alt="" />
+
+
+  <p><strong>Title:</strong> {{video.title}}</p>
+  <p><strong>Description:</strong> {{video.description}}</p>
+  <p><strong>Release Date:</strong> {{video.release_date}}</p>
+  <p *ngIf="video.hasOwnProperty('actors')">
+    <strong>Actors: </strong> <span *ngFor="let actor of video.actors">{{actor}},</span>
+  </p>
+  <ngx-stars [readonly]="false" [initialStars]="video.avg_rating" [maxStars]="5"
+             (ratingOutput)="onRatingSet($event, video.id)"></ngx-stars>
+</div>
+<button (click)="readMore()" *ngIf="videoLIst.length < this.totalCount">Load more</button>

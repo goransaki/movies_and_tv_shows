@@ -1,0 +1,3 @@
+<div class="show-errors-wrapper" *ngIf="shouldShowErrors() && getError()">
+    <span class="error-message" [innerHTML]="getError()"></span>
+</div>

@@ -1,0 +1,30 @@
+.video-card {
+  border-radius: 5px;
+  width: 300px;
+  height: auto;
+  border: 1px solid gray;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  .image {
+    max-width: 300px;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tabs {
+  margin-bottom: 20px;
+
+  span {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .active {
+    color: blue;
+
+  }
+}
